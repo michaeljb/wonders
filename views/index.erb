@@ -3,4 +3,9 @@
 
 players: <%= (@players || []).map { |p| p.name }.join(' ')%><br><br>
 
-boards: <%=(@boards || []).map { |b| "#{b.name} #{b.side}" }.join(' ') %>
+boards: <%=(@boards || []).map { |b| "#{b.name} #{b.side}" }.join(' ') %><br><br>
+
+
+<br>
+
+<a href="/game">Add a game</a>
