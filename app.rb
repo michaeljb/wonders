@@ -9,5 +9,6 @@ get '/' do
   @players = Player.all
   @boards = Board.all
   @title = 'Welcome'
-  "#{@title}<br><br>players: #{(@players || []).map { |p| p.name }.join(' ')}<br><br>boards: #{(@boards || []).map { |b| "#{b.name} #{b.side}" }.join(' ')}"
+
+  erb :index
 end
