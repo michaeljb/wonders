@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     'sudo apt-get install -y software-properties-common',
     'sudo apt-add-repository -y ppa:brightbox/ruby-ng-experimental',
     'sudo apt-get update',
-    'sudo apt-get install -y emacs libpq-dev tmux ruby-switch ruby2.0 ruby2.0-dev',
+    'sudo apt-get install -y emacs postgresql postgresql-contrib libpq-dev sqlite3 libsqlite3-dev tmux ruby-switch ruby2.0 ruby2.0-dev',
     'sudo ruby-switch --set ruby2.0',
     'sudo gem install bundler',
     'sudo gem install sinatra',

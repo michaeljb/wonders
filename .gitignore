@@ -1,3 +1,5 @@
 .bundle/
 .vagrant/
 vendor/
+name.db
+db/players.txt

@@ -1,13 +1,12 @@
-#These Settings Establish the Proper Database Connection for Heroku Postgres
-#The environment variable DATABASE_URL should be in the following format:
-# => postgres://{user}:{password}@{host}:{port}/path
-#This is automatically configured on Heroku, you only need to worry if you also
-#want to run your app locally
-configure :production, :development do
+configure :development do
+  set :database, 'sqlite3:name.db'
+ set :show_exceptions, true
+end
+configure :production do
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
   ActiveRecord::Base.establish_connection(
-      :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+      :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
       :host     => db.host,
       :username => db.user,
       :password => db.password,
