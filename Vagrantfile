@@ -15,6 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     'sudo ruby-switch --set ruby2.0',
     'sudo gem install bundler',
     'sudo gem install sinatra',
+    'sudo gem install thin',
     'cd /vagrant && bundle install --path vendor/bundle'
   ].each do |provisioner|
     config.vm.provision :shell, inline: provisioner
