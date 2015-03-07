@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require './config/environments'
 require './models/board'
+require './models/game'
 require './models/player'
 
 get '/' do
