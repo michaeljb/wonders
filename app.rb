@@ -13,6 +13,6 @@ get '/' do
   erb :index
 end
 
-get '/game' do
-  erb :"games/index"
+get '/games/add' do
+  erb :'games/add'
 end
