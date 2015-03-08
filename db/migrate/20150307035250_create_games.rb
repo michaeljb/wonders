@@ -23,6 +23,8 @@ class CreateGames < ActiveRecord::Migration
           :science,
           :commercial,
           :guilds,
+          :leaders,
+          :city,
           :total,
 
           # ordinal ranking of the 'total' column
