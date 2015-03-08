@@ -1,1 +1,57 @@
-Add a game
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="bootstrap-3.3.2-dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="bootstrap-3.3.2-dist/css/bootstrap.css">
+
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <table class="table table-bordered table-hover" id="tab_logic">
+          <thead>
+            <tr>
+              <th class="text-center">
+
+              </th>
+              <% (1..8).each do |p| %>
+                <th class="text-center">Player <%= p %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% ['Military Conflicts', 'Treasury/Debt', 'Wonder', 'Civilian Structures', 'Commercial Structures', 'Science Structures', 'Guilds'].each do |category| %>
+              <tr id="<%= "#{category.split(/[ \/]/).first.downcase}_row" %>">
+                <td><%= category %></td>
+
+                <% (1..8).each do |p| %>
+                  <td>
+                    <input type="text" name="<%= "#{category.split(/[ \/]/).first.downcase}_p#{p}" %>"  placeholder="0" class="form-control" />
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+
+            <tr id="<%= "leaders_row" %>" class="leaders">
+              <td>Leaders</td>
+              <% (1..8).each do |p| %>
+                <td>
+                  <input type="text" name="<%= "leaders_p#{p}" %>"  placeholder="0" class="form-control" />
+                </td>
+              <% end %>
+            </tr>
+
+            <tr id="<%= "city_row" %>" class="cities">
+              <td>City</td>
+              <% (1..8).each do |p| %>
+                <td>
+                  <input type="text" name="<%= "city_p#{p}" %>"  placeholder="0" class="form-control" />
+                </td>
+              <% end %>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</html>
