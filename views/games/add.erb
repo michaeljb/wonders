@@ -24,13 +24,13 @@
             </thead>
 
             <tbody>
-              <tr id="<%= "boards_row" %>" class="boards">
+              <tr id="boards_row">
                 <td>Boards</td>
                 <% (1..8).each do |p| %>
                   <td>
 
                     <select form="TheForm" name="board_name_p<%= p %>">
-                      <option value="" disabled selected></option>
+                      <option value="" disabled selected />
 
                       <% @board_names.each do |board| %>
                         <option><%= board %></option>
