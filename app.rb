@@ -14,5 +14,15 @@ get '/' do
 end
 
 get '/games/add' do
+  @board_names = Board.order('name').map { |b| b.name }.uniq
+  @scoring_categories = [
+    'Military Conflicts',
+    'Treasury/Debt',
+    'Wonder',
+    'Civilian Structures',
+    'Commercial Structures',
+    'Science Structures',
+    'Guilds'
+  ]
   erb :'games/add'
 end
