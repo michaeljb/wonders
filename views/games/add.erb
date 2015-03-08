@@ -32,7 +32,7 @@
                 <% (1..8).each do |p| %>
                   <td>
 
-                    <select form="TheForm" name="board_name_p<%= p %>" class="selectpicker">
+                    <select form="TheForm" name="board_name_p<%= p %>" class="selectpicker" data-width="auto">
                       <option value="" disabled selected />
 
                       <% @board_names.each do |board| %>
