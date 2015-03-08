@@ -21,7 +21,17 @@
 
                 </th>
                 <% (1..8).each do |p| %>
-                  <th class="text-center">Player <%= p %></th>
+                  <th class="text-center">
+
+                    <select form="TheForm" name="player<%= p %>" class="selectpicker" data-width="auto">
+                      <option selected>Player <%= p %></option>
+
+                      <% @player_names.each do |player| %>
+                        <option><%= player %></option>
+                      <% end %>
+                    </select>
+
+                  </th>
                 <% end %>
               </tr>
             </thead>

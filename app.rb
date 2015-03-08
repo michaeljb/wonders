@@ -14,6 +14,7 @@ get '/' do
 end
 
 get '/games/add' do
+  @player_names = Player.order('name').map { |p| p.name }.uniq
   @board_names = Board.order('name').map { |b| b.name }.uniq
   @scoring_categories = [
     'Military Conflicts',
