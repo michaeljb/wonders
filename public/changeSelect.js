@@ -12,18 +12,22 @@ function changeSelect() {
 
 function usingLeaders() {
   if ($('#using_leaders').is(':checked')) {
-    $('tr.leaders').show();
+    $('tr#leaders_row').show();
   } else {
-    $('tr.leaders').hide();
+    $('tr#leaders_row input').val('')
+    $('tr#leaders_row').hide();
   }
+  calculateTotals();
 }
 
 function usingCities() {
   if ($('#using_cities').is(':checked')) {
-    $('tr.cities').show();
+    $('tr#city_row').show();
   } else {
-    $('tr.cities').hide();
+    $('tr#city_row input').val('')
+    $('tr#city_row').hide();
   }
+  calculateTotals();
 }
 
 function calculateTotals() {
