@@ -18,7 +18,7 @@
           Players:
           <select id="player_count" onchange="changeSelect()" form="TheForm" name="player_count">
             <% (1..8).each do |p| %>
-              <option <%= p == @default_players ? 'selected' : ''%> ><%= p %></option>
+              <option <%= p == @default_players ? 'selected' : '' %>><%= p %></option>
             <% end %>
           </select>
 
