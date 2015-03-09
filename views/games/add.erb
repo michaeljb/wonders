@@ -71,8 +71,10 @@
                       <% end %>
                     </select>
 
-                    <input type="radio" name="board_side_p<%= p %>" class="form-control" value="A" checked="checked">A<br>
-                    <input type="radio" name="board_side_p<%= p %>" class="form-control" value="B">B<br>
+                    <div class="col-md-12 column">
+                      <label>A <input type="radio" name="board_side_p<%= p %>" class="inline control-label" value="A" checked="checked"></label>
+                      <label>B <input type="radio" name="board_side_p<%= p %>" class="inline control-label" value="B"></label>
+                    </div>
 
                   </td>
                 <% end %>
