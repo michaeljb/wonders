@@ -10,17 +10,17 @@
 
   <script src="/changeSelect.js"></script>
 
-  Players:
-  <select id="player_count" onchange="changeSelect()">
-    <% (1..8).each do |p| %>
-      <option <%= p == @default_players ? 'selected' : ''%> ><%= p %></option>
-    <% end %>
-  </select>
-
   <div class="container">
     <div class="row clearfix">
       <div class="col-md-12 column">
         <form id="TheForm">
+
+          Players:
+          <select id="player_count" onchange="changeSelect()" form="TheForm" name="player_count">
+            <% (1..8).each do |p| %>
+              <option <%= p == @default_players ? 'selected' : ''%> ><%= p %></option>
+            <% end %>
+          </select>
 
           <table class="table table-bordered table-hover" id="tab_logic">
 
