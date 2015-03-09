@@ -10,6 +10,24 @@ function changeSelect() {
   }
 }
 
+function usingLeaders() {
+  if ($('#using_leaders').is(':checked')) {
+    $('tr.leaders').show();
+  } else {
+    $('tr.leaders').hide();
+  }
+}
+
+function usingCities() {
+  if ($('#using_cities').is(':checked')) {
+    $('tr.cities').show();
+  } else {
+    $('tr.cities').hide();
+  }
+}
+
 $(document).ready(function () {
-  changeSelect()
+  changeSelect();
+  usingLeaders();
+  usingCities();
 });
