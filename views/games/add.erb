@@ -8,6 +8,31 @@
   <script src="/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
   <script src="/bootstrap-select-1.6.3-dist/js/bootstrap-select.min.js"></script>
 
+  <script type="text/javascript">
+   function changeSelect() {
+     var count = parseInt($('#player_count').val(), 10);
+     var i, j;
+
+     for (i = 1; i <= count; i++) {
+       $('.player' + i).show();
+     }
+     for (j = count + 1; j <= 8; j++) {
+       $('.player' + j).hide();
+     }
+   }
+
+   $(document).ready(function () {
+     changeSelect()
+   });
+  </script>
+
+  Players:
+  <select id="player_count" onchange="changeSelect()">
+    <% (1..8).each do |p| %>
+      <option <%= p == @default_players ? 'selected' : ''%> ><%= p %></option>
+    <% end %>
+  </select>
+
   <div class="container">
     <div class="row clearfix">
       <div class="col-md-12 column">
@@ -21,7 +46,7 @@
 
                 </th>
                 <% (1..8).each do |p| %>
-                  <th class="text-center">
+                  <th class="text-center player<%= p %>">
 
                     <select form="TheForm" name="player<%= p %>" class="selectpicker" data-width="auto">
                       <option selected>Player <%= p %></option>
@@ -40,7 +65,7 @@
               <tr id="boards_row">
                 <td>Boards</td>
                 <% (1..8).each do |p| %>
-                  <td>
+                  <td class="player<%= p %>">
 
                     <select form="TheForm" name="board_name_p<%= p %>" class="selectpicker" data-width="auto">
                       <option value="" disabled selected />
@@ -63,7 +88,7 @@
                   <td><%= category %></td>
 
                   <% (1..8).each do |p| %>
-                    <td>
+                    <td class="player<%= p %>">
                       <input type="text" name="<%= category.split(/[ \/]/).first.downcase %>_p<%= p %>"  placeholder="0" class="form-control" />
                     </td>
                   <% end %>
@@ -73,7 +98,7 @@
               <tr id="<%= "leaders_row" %>" class="leaders">
                 <td>Leaders</td>
                 <% (1..8).each do |p| %>
-                  <td>
+                  <td class="player<%= p %>">
                     <input type="text" name="leaders_p<%= p %>"  placeholder="0" class="form-control" />
                   </td>
                 <% end %>
@@ -82,7 +107,7 @@
               <tr id="<%= "city_row" %>" class="cities">
                 <td>City</td>
                 <% (1..8).each do |p| %>
-                  <td>
+                  <td class="player<%= p %>">
                     <input type="text" name="city_p<%= p %>"  placeholder="0" class="form-control" />
                   </td>
                 <% end %>

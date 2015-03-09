@@ -25,5 +25,6 @@ get '/games/add' do
     'Science Structures',
     'Guilds'
   ]
+  @default_players = 3
   erb :'games/add'
 end
