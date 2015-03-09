@@ -8,23 +8,7 @@
   <script src="/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
   <script src="/bootstrap-select-1.6.3-dist/js/bootstrap-select.min.js"></script>
 
-  <script type="text/javascript">
-   function changeSelect() {
-     var count = parseInt($('#player_count').val(), 10);
-     var i, j;
-
-     for (i = 1; i <= count; i++) {
-       $('.player' + i).show();
-     }
-     for (j = count + 1; j <= 8; j++) {
-       $('.player' + j).hide();
-     }
-   }
-
-   $(document).ready(function () {
-     changeSelect()
-   });
-  </script>
+  <script src="/changeSelect.js"></script>
 
   Players:
   <select id="player_count" onchange="changeSelect()">
