@@ -80,7 +80,7 @@
 
 
               <% @scoring_categories.each do |category| %>
-                <tr id="<%= category.split(/[ \/]/).first.downcase %>_row">
+                <tr class="score" id="<%= category.split(/[ \/]/).first.downcase %>_row">
                   <td><%= category %></td>
 
                   <% (1..8).each do |p| %>
@@ -91,7 +91,7 @@
                 </tr>
               <% end %>
 
-              <tr id="<%= "leaders_row" %>" class="leaders">
+              <tr class="score" id="<%= "leaders_row" %>" class="leaders">
                 <td>Leaders</td>
                 <% (1..8).each do |p| %>
                   <td class="player<%= p %>">
@@ -100,11 +100,20 @@
                 <% end %>
               </tr>
 
-              <tr id="<%= "city_row" %>" class="cities">
+              <tr class="score" id="<%= "city_row" %>" class="cities">
                 <td>City</td>
                 <% (1..8).each do |p| %>
                   <td class="player<%= p %>">
                     <input type="text" name="city_p<%= p %>"  placeholder="0" class="form-control" />
+                  </td>
+                <% end %>
+              </tr>
+
+              <tr id="total_row">
+                <td><strong>Total</strong></td>
+                <% (1..8).each do |p| %>
+                  <td class="player<%= p %>">
+                    <input type="text" name="total_p<%= p %>" placeholder="0" class="form-control" disabled />
                   </td>
                 <% end %>
               </tr>

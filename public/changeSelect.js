@@ -26,8 +26,38 @@ function usingCities() {
   }
 }
 
+function calculateTotals() {
+  var count = parseInt($('#player_count').val(), 10);
+  var i, j, $scores, scores, total;
+
+  for (i = 1; i <= count; i++) {
+    $scores = $('tr.score td.player' + i + ' input')
+
+    scores = $.map($scores, function (element) {
+      var $el = $(element);
+      var value = 0;
+      if ($el.val() !== '') {
+        value = parseInt($el.val(), 10);
+      }
+      return value;
+    });
+
+    total = 0;
+    for (j = 0; j < scores.length; j++) {
+      total += scores[j];
+    }
+
+    $('#total_row td.player' + i + ' input').val(total);
+  }
+}
+
 $(document).ready(function () {
   changeSelect();
   usingLeaders();
   usingCities();
+
+  $('tr.score input').change(function () {
+    calculateTotals();
+  });
+
 });
