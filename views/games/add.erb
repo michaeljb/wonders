@@ -145,7 +145,7 @@
                 <td><strong>Total</strong></td>
                 <% (1..8).each do |p| %>
                   <td class="player<%= p %>">
-                    <input type="text" name="total_p<%= p %>" placeholder="0" class="form-control" disabled />
+                    <input type="text" name="total_p<%= p %>" placeholder="0" class="form-control" readonly="readonly" />
                   </td>
                 <% end %>
               </tr>
