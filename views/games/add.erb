@@ -3,10 +3,12 @@
   <link rel="stylesheet" href="/bootstrap-3.3.2-dist/css/bootstrap-theme.css">
   <link rel="stylesheet" href="/bootstrap-3.3.2-dist/css/bootstrap.css">
   <link rel="stylesheet" href="/bootstrap-select-1.6.3-dist/css/bootstrap-select.css">
+  <link rel="stylesheet" href="/bootstrap-switch.css">
 
   <script src="/jquery-2.1.3.min.js"></script>
   <script src="/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
   <script src="/bootstrap-select-1.6.3-dist/js/bootstrap-select.min.js"></script>
+  <script src="/bootstrap-switch.js"></script>
 
   <script src="/changeSelect.js"></script>
 
@@ -71,15 +73,16 @@
                       <% end %>
                     </select>
 
-                    <div class="col-md-12 column">
-                      <label>A <input type="radio" name="board_side_p<%= p %>" class="inline control-label" value="A" checked="checked"></label>
-                      <label>B <input type="radio" name="board_side_p<%= p %>" class="inline control-label" value="B"></label>
-                    </div>
+                    <input type="checkbox" class="board_side"
+                      name="board_side_p<%= p %>"
+                      data-label-text="Side"
+                      data-on-text="A" data-off-text="B"
+                      data-on-color="default" data-off-color="default"
+                      checked>
 
                   </td>
                 <% end %>
               </tr>
-
 
               <% @scoring_categories.each do |category| %>
                 <tr class="score" id="<%= category.split(/[ \/]/).first.downcase %>_row">

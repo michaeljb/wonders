@@ -64,4 +64,6 @@ $(document).ready(function () {
     calculateTotals();
   });
 
+  $('tr#boards_row input.board_side').bootstrapSwitch();
+
 });
