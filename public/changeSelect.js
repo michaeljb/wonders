@@ -66,4 +66,6 @@ $(document).ready(function () {
 
   $('tr#boards_row input.board_side').bootstrapSwitch();
 
+  $('#using_leaders').bootstrapSwitch();
+  $('#using_cities').bootstrapSwitch();
 });

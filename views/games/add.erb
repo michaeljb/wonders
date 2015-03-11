@@ -27,13 +27,27 @@
 
           <div>
             <label>
-              Using Leaders Expansion? <input onchange="usingLeaders()" type="checkbox" name="using_leaders" id="using_leaders">
+              <input type="checkbox"
+                id="using_leaders" name="using_leaders"
+                onchange="usingLeaders()"
+                name="board_side_p<%= p %>"
+                data-on-color="default" data-off-color="default"
+                data-label-text="Leaders"
+                data-size="small"
+                >
             </label>
           </div>
 
           <div>
             <label>
-              Using Cities Expansion? <input onchange="usingCities()" type="checkbox" name="using_cities" id="using_cities">
+              <input type="checkbox"
+                id="using_cities" name="using_cities"
+                onchange="usingCities()"
+                name="board_side_p<%= p %>"
+                data-on-color="default" data-off-color="default"
+                data-label-text="Cities"
+                data-size="small"
+                >
             </label>
           </div>
 
