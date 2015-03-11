@@ -3,11 +3,13 @@ class CreateGames < ActiveRecord::Migration
     create_table :games do |t|
       t.date :date
 
+      t.integer :player_count
+
       # using expansions?
       t.boolean :cities
       t.boolean :leaders
 
-      (1..7).to_a.each do |n|
+      (1..8).to_a.each do |n|
         # foreign key - Players
         t.integer :"player#{n}"
 
