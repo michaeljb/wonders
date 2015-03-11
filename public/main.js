@@ -68,4 +68,9 @@ $(document).ready(function () {
 
   $('#using_leaders').bootstrapSwitch();
   $('#using_cities').bootstrapSwitch();
+
+  $('.datepicker').datepicker({
+    autoclose: true,
+    format: 'yyyy-mm-dd'
+  });
 });
