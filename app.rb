@@ -14,7 +14,7 @@ get '/' do
 end
 
 get '/games/' do
-  "All the games"
+  erb :'games/index'
 end
 
 get '/games/add' do
@@ -34,7 +34,8 @@ get '/games/add' do
 end
 
 get '/games/:id' do
-  "Game ##{params[:id]}"
+  @game_id = params[:id]
+  erb :'games/game'
 end
 
 post '/games/add' do
