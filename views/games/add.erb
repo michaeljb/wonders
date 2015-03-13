@@ -115,7 +115,7 @@
 
                   <% (1..8).each do |p| %>
                     <td class="player<%= p %>">
-                      <input type="text" name="<%= category.split(/[ \/]/).first.downcase %>_p<%= p %>"  placeholder="0" class="form-control" />
+                      <input type="text" name="<%= category.split(/[ \/]/).first.downcase %>_p<%= p %>"  value="0" class="form-control" />
                     </td>
                   <% end %>
                 </tr>
@@ -125,7 +125,7 @@
                 <td>Leaders</td>
                 <% (1..8).each do |p| %>
                   <td class="player<%= p %>">
-                    <input type="text" name="leaders_p<%= p %>"  placeholder="0" class="form-control" />
+                    <input type="text" name="leaders_p<%= p %>" value="0" class="form-control" />
                   </td>
                 <% end %>
               </tr>
@@ -134,7 +134,7 @@
                 <td>City</td>
                 <% (1..8).each do |p| %>
                   <td class="player<%= p %>">
-                    <input type="text" name="city_p<%= p %>"  placeholder="0" class="form-control" />
+                    <input type="text" name="city_p<%= p %>"  value="0" class="form-control" />
                   </td>
                 <% end %>
               </tr>
@@ -143,7 +143,7 @@
                 <td><strong>Total</strong></td>
                 <% (1..8).each do |p| %>
                   <td class="player<%= p %>">
-                    <input type="text" name="total_p<%= p %>" placeholder="0" class="form-control" readonly="readonly" />
+                    <input type="text" name="total_p<%= p %>" value="0" class="form-control" readonly="readonly" />
                   </td>
                 <% end %>
               </tr>

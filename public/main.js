@@ -14,7 +14,7 @@ function usingLeaders() {
   if ($('#using_leaders').is(':checked')) {
     $('tr#leaders_row').show();
   } else {
-    $('tr#leaders_row input').val('')
+    $('tr#leaders_row input').val(0)
     $('tr#leaders_row').hide();
   }
   calculateTotals();
@@ -24,7 +24,7 @@ function usingCities() {
   if ($('#using_cities').is(':checked')) {
     $('tr#city_row').show();
   } else {
-    $('tr#city_row input').val('')
+    $('tr#city_row input').val(0)
     $('tr#city_row').hide();
   }
   calculateTotals();
