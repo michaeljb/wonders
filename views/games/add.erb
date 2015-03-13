@@ -23,7 +23,7 @@
   <div class="container">
     <div class="row clearfix">
       <div class="col-md-12 column">
-        <form id="TheForm">
+        <form id="TheForm" action="/games/add" method="POST">
 
           <div>
             <input class="datepicker" name="date" value="<%= Time.now.strftime('%Y-%m-%d') %>">
