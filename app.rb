@@ -34,8 +34,32 @@ get '/games/add' do
 end
 
 get '/games/:id' do
-  @game_id = params[:id]
-  erb :'games/game'
+  @game = Game.find(params[:id].to_i)
+
+  @player_count = @game.player_count
+
+  @players = {}
+  @boards = {}
+
+  (1..@game.player_count).map do |p|
+    @players[p] = Player.find(@game[:"player#{p}"]).name
+
+    board_id = @game[:"board_p#{p}"]
+    board = Board.find(board_id)
+    @boards[p] = "#{board.name} #{board.side}"
+  end
+
+  @scoring_categories = [
+    'Military Conflicts',
+    'Treasury/Debt',
+    'Wonder',
+    'Civilian Structures',
+    'Commercial Structures',
+    'Science Structures',
+    'Guilds'
+  ]
+
+  erb :'games/id'
 end
 
 def scores_to_rankings(scores)
