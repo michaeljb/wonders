@@ -5,9 +5,10 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 
 group :development do
- gem 'sqlite3'
- gem 'thin'
- gem 'tux'
+  gem 'pry-byebug'
+  gem 'sqlite3'
+  gem 'thin'
+  gem 'tux'
 end
 
 group :production do
