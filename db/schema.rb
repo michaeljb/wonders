@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307035250) do
+ActiveRecord::Schema.define(version: 20150315204527) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -131,6 +131,106 @@ ActiveRecord::Schema.define(version: 20150307035250) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "standings2p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+  end
+
+  create_table "standings3p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+    t.integer "2.5"
+    t.integer "3"
+  end
+
+  create_table "standings4p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+    t.integer "2.5"
+    t.integer "4"
+    t.integer "4.5"
+  end
+
+  create_table "standings5p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+    t.integer "2.5"
+    t.integer "5"
+    t.integer "5.5"
+    t.integer "4"
+    t.integer "4.5"
+  end
+
+  create_table "standings6p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+    t.integer "2.5"
+    t.integer "6"
+    t.integer "6.5"
+    t.integer "4"
+    t.integer "4.5"
+    t.integer "5"
+    t.integer "5.5"
+  end
+
+  create_table "standings7p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+    t.integer "2.5"
+    t.integer "7"
+    t.integer "7.5"
+    t.integer "4"
+    t.integer "4.5"
+    t.integer "5"
+    t.integer "5.5"
+    t.integer "6"
+    t.integer "6.5"
+  end
+
+  create_table "standings8p", force: :cascade do |t|
+    t.integer "player"
+    t.integer "games_played"
+    t.float   "ranking_avg"
+    t.integer "1"
+    t.integer "1.5"
+    t.integer "2"
+    t.integer "2.5"
+    t.integer "8"
+    t.integer "8.5"
+    t.integer "4"
+    t.integer "4.5"
+    t.integer "5"
+    t.integer "5.5"
+    t.integer "6"
+    t.integer "6.5"
+    t.integer "7"
+    t.integer "7.5"
   end
 
 end

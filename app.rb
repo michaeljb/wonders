@@ -4,6 +4,13 @@ require './config/environments'
 require './models/board'
 require './models/game'
 require './models/player'
+require './models/standings2p'
+require './models/standings3p'
+require './models/standings4p'
+require './models/standings5p'
+require './models/standings6p'
+require './models/standings7p'
+require './models/standings8p'
 
 get '/' do
   @players = Player.all
