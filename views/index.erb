@@ -52,10 +52,10 @@
               <tr>
                 <td><%= Player.find(s[:player]).name %></td>
                 <td><%= s[:games_played] %></td>
-                <td><%= s[:ranking_avg] %></td>
+                <td><%= s[:ranking_avg].round(2) %></td>
 
-                <% ((2..(2 * n)).map { |m| m / 2.0}).each do |_n| %>
-                  <td><%= s[:"_n"] %></td>
+                <% Standings3P.column_names.select { |c| c =~ /^[0-9]/ }.each do |_n| %>
+                  <td><%= s[_n] %></td>
                 <% end %>
               </tr>
             <% end %>

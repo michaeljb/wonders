@@ -140,11 +140,17 @@ post '/games/add' do
   # scores, used later to calculate rankings
   scores = {}
 
+  # key: player N in the game
+  # value: player ID in the Player table
+  player_ids = {}
+
   # all player info
   (1..player_count).each do |n|
     # name
     player_id = Player.where(name: params[:"player#{n}"]).first.id
     game_opts[:"player#{n}"] = player_id
+
+    player_ids[n] = player_id
 
     # board
     board_name = params[:"board_name_p#{n}"]
@@ -173,6 +179,7 @@ post '/games/add' do
   end
 
   rankings = scores_to_rankings(scores)
+  puts "rankings = #{rankings}"
 
   (1..player_count).each do |n|
     game_opts[:"ranking_p#{n}"] = rankings[n]
@@ -181,6 +188,64 @@ post '/games/add' do
   puts "game_opts = #{game_opts}"
 
   new_game = Game.create(**game_opts)
+
+  # update records for each player in the appropriate Standings table
+
+  puts "getting the standings table..."
+  standings_table = Object.const_get("Standings#{player_count}P")
+  puts "got table #{standings_table.table_name}"
+
+  player_ids.each do |player_n, player_id|
+    puts "\n\nupdate info for player #{player_id} (Player id, not seat number)"
+
+    player_stats = standings_table.find_by(player: player_id)
+
+    # need to add a row to the table
+    if player_stats.nil?
+      puts "no entries for this player in #{player_count}-player yet, creating entry"
+
+      init_player_stats = {
+        player: player_id,
+        games_played: 0,
+        ranking_avg: 0.0
+      }
+
+
+      Standings3P.column_names.select { |c| c =~ /^[0-9]/ }.each do |col|
+        init_player_stats[col] = 0
+      end
+
+      puts "creating entry for player #{player_id} in Standings#{player_count}P with inital stats: #{init_player_stats}"
+      player_stats = standings_table.create(init_player_stats)
+    end
+
+    puts "player_stats = #{player_stats}"
+
+    # update the table
+
+    puts "increasing games played from #{player_stats[:games_played]} by 1..."
+    player_stats.update(games_played: player_stats[:games_played] + 1)
+
+    column = :"#{rankings[player_n]}"
+
+    if column.to_s =~ /\.0$/
+      column = column[0]
+    end
+
+    puts "increasing appropriate rankings column (:#{column}) by 1..."
+    player_stats.update(column => player_stats[column] + 1)
+
+    puts "calculating new average ranking points..."
+    sum = Standings3P.column_names.select { |c| c =~ /^[0-9]/ }.reduce(0) do |sum, n|
+      sum + (player_stats[n] * n.to_f)
+    end
+    avg = sum.to_f / player_stats[:games_played]
+
+    puts "updating average ranking column"
+    player_stats.update(ranking_avg: avg)
+
+    puts "done updating standings table for player #{player_id}\n\n"
+  end
 
   redirect to("/games/#{new_game.id}")
 end
