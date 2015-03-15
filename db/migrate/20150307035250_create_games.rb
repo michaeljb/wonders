@@ -13,6 +13,12 @@ class CreateGames < ActiveRecord::Migration
         # foreign key - Players
         t.integer :"player#{n}"
 
+        # ranking points earned this game; 1 for first, 2 for second, etc.
+        #
+        # ties split points, i.e. if 2 players tie for first, they split the
+        # points earned by first and second place, so they each earn 1.5
+        t.float :"ranking_p#{n}"
+
         [
           # foreign key - Boards
           :board,
@@ -27,10 +33,7 @@ class CreateGames < ActiveRecord::Migration
           :guilds,
           :leaders,
           :city,
-          :total,
-
-          # ordinal ranking of the 'total' column
-          :ranking
+          :total
         ].each do |column|
           t.integer :"#{column}_p#{n}"
         end

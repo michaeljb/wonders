@@ -27,6 +27,25 @@
   Cites: <%= @game.cities %>
   Leaders: <%= @game.leaders %>
 
+  <table class="table table-bordered table-hover" id="rankings">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Ranking Points</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @rankings.each do |ranking| %>
+        <tr>
+          <td><%= ranking[:player] %></td>
+          <td><%= ranking[:points] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+
   <table class="table table-bordered table-hover" id="tab_logic">
     <thead>
       <tr>

@@ -40,6 +40,7 @@ get '/games/:id' do
 
   @players = {}
   @boards = {}
+  @rankings = []
 
   (1..@game.player_count).map do |p|
     @players[p] = Player.find(@game[:"player#{p}"]).name
@@ -47,6 +48,14 @@ get '/games/:id' do
     board_id = @game[:"board_p#{p}"]
     board = Board.find(board_id)
     @boards[p] = "#{board.name} #{board.side}"
+
+    @rankings.push(player: @players[p], points: @game[:"ranking_p#{p}"])
+  end
+
+  # sort so that fewest ranking points is first, tie goes to alphabetical
+  #@rankings.sort
+  @rankings.sort! do |a, b|
+    [a[:points], a[:player]] <=> [b[:points], b[:player]]
   end
 
   @scoring_categories = [
