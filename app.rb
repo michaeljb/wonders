@@ -17,6 +17,12 @@ get '/' do
   @boards = Board.all
   @title = 'Welcome'
 
+  @standings = {}
+
+  (2..8).each do |n|
+    @standings[n] = Object.const_get("Standings#{n}P").all
+  end
+
   erb :index
 end
 
