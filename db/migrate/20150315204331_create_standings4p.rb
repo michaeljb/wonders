@@ -7,13 +7,9 @@ class CreateStandings4p < ActiveRecord::Migration
 
       t.float :ranking_avg
 
-      t.integer :'1'
-      t.integer :'1.5'
-      t.integer :'2'
-      t.integer :'2.5'
-      t.integer :'4'
-      t.integer :'4.5'
-      t.integer :'4'
+      (2..8).each do |n|
+        t.integer :"#{n / 2.0}"
+      end
     end
   end
 
