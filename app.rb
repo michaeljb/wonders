@@ -39,8 +39,8 @@ get '/games/add' do
     'Wonder',
     'Civilian Structures',
     'Commercial Structures',
-    'Science Structures',
-    'Guilds'
+    'Guilds',
+    'Science Structures'
   ]
   @default_players = 3
   erb :'games/add'
@@ -80,8 +80,8 @@ get '/games/:id' do
     'Wonder',
     'Civilian Structures',
     'Commercial Structures',
-    'Science Structures',
-    'Guilds'
+    'Guilds',
+    'Science Structures'
   ]
 
   erb :'games/id'
