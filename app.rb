@@ -15,7 +15,6 @@ require './models/standings8p'
 get '/' do
   @players = Player.all
   @boards = Board.all
-  @title = 'Welcome'
 
   @standings = {}
 
