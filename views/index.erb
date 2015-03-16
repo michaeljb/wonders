@@ -54,7 +54,7 @@
                 <td><%= s[:games_played] %></td>
                 <td><%= s[:ranking_avg].round(2) %></td>
 
-                <% Standings3P.column_names.select { |c| c =~ /^[0-9]/ }.each do |_n| %>
+                <% Object.const_get("Standings#{n}P").column_names.select { |c| c =~ /^[0-9]/ }.each do |_n| %>
                   <td><%= s[_n] %></td>
                 <% end %>
               </tr>

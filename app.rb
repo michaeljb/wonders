@@ -59,8 +59,11 @@ get '/games/:id' do
     @players[p] = Player.find(@game[:"player#{p}"]).name
 
     board_id = @game[:"board_p#{p}"]
-    board = Board.find(board_id)
-    @boards[p] = "#{board.name} #{board.side}"
+
+    unless board_id.nil?
+      board = Board.find(board_id)
+      @boards[p] = "#{board.name} #{board.side}"
+    end
 
     @rankings.push(player: @players[p], points: @game[:"ranking_p#{p}"])
   end
@@ -155,8 +158,13 @@ post '/games/add' do
     # board
     board_name = params[:"board_name_p#{n}"]
     side = params[:"board_side_p#{n}"] == 'on' ? 'A' : 'B'
-    board_id = Board.where(name: board_name, side: side).first.id
-    game_opts[:"board_p#{n}"] = board_id
+
+    board = Board.where(name: board_name, side: side).first
+
+    unless board.nil?
+      board_id = board.id
+      game_opts[:"board_p#{n}"] = board_id
+    end
 
     # score categories
     %w(
@@ -211,7 +219,7 @@ post '/games/add' do
       }
 
 
-      Standings3P.column_names.select { |c| c =~ /^[0-9]/ }.each do |col|
+      standings_table.column_names.select { |c| c =~ /^[0-9]/ }.each do |col|
         init_player_stats[col] = 0
       end
 
@@ -228,15 +236,11 @@ post '/games/add' do
 
     column = :"#{rankings[player_n]}"
 
-    if column.to_s =~ /\.0$/
-      column = column[0]
-    end
-
     puts "increasing appropriate rankings column (:#{column}) by 1..."
     player_stats.update(column => player_stats[column] + 1)
 
     puts "calculating new average ranking points..."
-    sum = Standings3P.column_names.select { |c| c =~ /^[0-9]/ }.reduce(0) do |sum, n|
+    sum = standings_table.column_names.select { |c| c =~ /^[0-9]/ }.reduce(0) do |sum, n|
       sum + (player_stats[n] * n.to_f)
     end
     avg = sum.to_f / player_stats[:games_played]
