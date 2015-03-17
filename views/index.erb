@@ -5,7 +5,8 @@
         "/bootstrap-3.3.2-dist/css/bootstrap.css",
         "/bootstrap-select-1.6.3-dist/css/bootstrap-select.css",
         "/bootstrap-switch.css",
-        "/bootstrap-datepicker.css"
+        "/bootstrap-datepicker.css",
+        "/bootstrap-table.min.css"
     ].each do |css| %>
     <link rel="stylesheet" href="<%= css %>">
     <% end %>
@@ -14,7 +15,8 @@
         "/bootstrap-3.3.2-dist/js/bootstrap.js",
         "/bootstrap-select-1.6.3-dist/js/bootstrap-select.min.js",
         "/bootstrap-switch.js",
-        "/bootstrap-datepicker.js"
+        "/bootstrap-datepicker.js",
+        "/bootstrap-table.min.js"
     ].each do |js| %>
     <script src="<%= js %>"></script>
     <% end %>
@@ -26,15 +28,15 @@
 
     <% (2..8).each do |n| %>
       <div class=<%= n %>player">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" data-toggle="table" data-sort-name="avg" data-order="asc" >
           <thead>
-            <th class="text-center"><%= n %> Players</th>
+            <th data-sortable="true" name="player" class="text-center"><%= n %> Players</th>
 
-            <th>Games Played</th>
-            <th>Average Rank</th>
+            <th data-sortable="true" >Games Played</th>
+            <th data-field="avg" data-sortable="true" >Average Rank</th>
 
             <% ((2..(2 * n)).map { |m| m / 2.0}).each do |_n| %>
-              <th><%= _n %></th>
+              <th data-sortable="true" ><%= _n %></th>
             <% end %>
 
           </thead>
@@ -53,6 +55,7 @@
             <% end %>
           </tbody>
         </table>
+        <br><br>
 
       </div>
     <% end %>
